@@ -58,22 +58,31 @@ a {
 .site-header {
     background-color: var(--red-deep);
     color: var(--off-white);
-    padding: 1.25rem 5%;
+    padding: 0; 
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
     border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    width: 100%;
 }
 
 .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    width: 100%;
+    min-height: 90px; 
+    padding: 1.25rem 5%; 
+
+    /*  Background Image & Overlay */
+    background-image: 
+        linear-gradient(rgba(125, 5, 5, 0.60), rgba(125, 5, 5, 0.60)), 
+        url('event.jpg');
+    background-size: cover;        
+    background-position: center;     
+    background-repeat: no-repeat;
+    background-color: var(--red-deep, #7d0505);
 }
 
 .site-title {
@@ -84,24 +93,33 @@ a {
     letter-spacing: 2.5px;
     margin: 0;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    white-space: nowrap; 
 }
 
 .main-nav ul {
     display: flex;
     list-style: none;
-    gap: 1.5rem;
+    gap: 1.25rem;
     align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
-.main-nav a {
+.main-nav a, #foot {
     color: var(--off-white);
     font-weight: 700;
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 0.5rem 0.85rem;
+    padding: 0.6rem 1rem;
     border-radius: 6px;
     transition: background-color var(--transition-fast), color var(--transition-fast);
+    
+    
+    display: inline-block;
+    white-space: nowrap; 
+    line-height: 1.2; 
+    text-align: center;
 }
 
 .main-nav a:hover,
@@ -109,6 +127,7 @@ a {
     background-color: var(--red-vibrant);
     color: var(--pure-white);
 }
+
 
 .btn,
 button,
