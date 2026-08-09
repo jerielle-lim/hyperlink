@@ -1,5 +1,5 @@
 :root {
-    /* Color Palette - Dito kayo kumuha ng mga color values if ever may gusto kayong ilagay/idagdag na design*/
+    /* Color Palette "Dito nalang kayo kumuha guys ng color codes 😊"*/
     --mauve-light: #bc727d;
     --mauve-taupe: #a28a8d;
     --charcoal-dark: #3e2f2c;
@@ -27,14 +27,10 @@ body {
     line-height: 1.7;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", Geneva, sans-serif;
     color: var(--red-deep);
     font-weight: 700;
@@ -45,7 +41,7 @@ h6 {
 
 p {
     margin-bottom: 1.2rem;
-    color: #2b201e;
+    color: inherit;
 }
 
 a {
@@ -54,7 +50,7 @@ a {
     transition: opacity var(--transition-fast);
 }
 
-/* HEADER & TOP NAVIGATION - Maroon Theme */
+/* HEADER & TOP NAVIGATION */
 .site-header {
     background-color: var(--red-deep);
     color: var(--off-white);
@@ -75,14 +71,14 @@ a {
     min-height: 90px; 
     padding: 1.25rem 5%; 
 
-    /*  Background Image & Overlay */
+    /* Background Image & Overlay */
     background-image: 
-        linear-gradient(rgba(125, 5, 5, 0.60), rgba(125, 5, 5, 0.60)), 
+        linear-gradient(rgba(125, 5, 5, 0.70), rgba(125, 5, 5, 0.70)), 
         url('event.jpg');
     background-size: cover;        
     background-position: center;     
     background-repeat: no-repeat;
-    background-color: var(--red-deep, #7d0505);
+    background-color: var(--red-deep);
 }
 
 .site-title {
@@ -99,7 +95,7 @@ a {
 .main-nav ul {
     display: flex;
     list-style: none;
-    gap: 1.25rem;
+    gap: 1rem;
     align-items: center;
     margin: 0;
     padding: 0;
@@ -111,11 +107,9 @@ a {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 0.6rem 1rem;
+    padding: 0.6rem 0.8rem;
     border-radius: 6px;
     transition: background-color var(--transition-fast), color var(--transition-fast);
-    
-    
     display: inline-block;
     white-space: nowrap; 
     line-height: 1.2; 
@@ -128,7 +122,7 @@ a {
     color: var(--pure-white);
 }
 
-
+/* BUTTON STYLES */
 .btn,
 button,
 input[type="submit"],
@@ -137,14 +131,12 @@ input[type="button"] {
     display: inline-block;
     padding: 0.85rem 2.2rem;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", Geneva, sans-serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 800;
     text-transform: capitalize;
     letter-spacing: 1px;
     color: var(--pure-white);
-    
-    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8), 0px 2px 4px rgba(0, 0, 0, 0.9);
-    
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.6); 
     border-radius: 25px; 
     cursor: pointer;
@@ -152,7 +144,6 @@ input[type="button"] {
     z-index: 1;
 
     background: linear-gradient(120deg, #8a1313 0%, #b02323 25%, #666666 75%, #1f1f1f 100%);
-    
     box-shadow:
         0 4px 8px rgba(0, 0, 0, 0.4), 
         inset 0 3px 4px rgba(255, 255, 255, 0.3), 
@@ -167,53 +158,54 @@ input[type="submit"]:hover,
 input[type="button"]:hover {
     filter: brightness(1.15);
     transform: translateY(-2px);
-    box-shadow:
-        0 6px 12px rgba(0, 0, 0, 0.5),
-        inset 0 3px 4px rgba(255, 255, 255, 0.4),
-        inset 0 -3px 6px rgba(0, 0, 0, 0.7);
 }
 
 .btn:active,
 button:active {
     transform: translateY(0);
-    box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.4),
-        inset 0 2px 6px rgba(0, 0, 0, 0.8);
 }
 
+/* MAIN LAYOUT */
 .main-content {
     max-width: 1200px;
-    margin: 3rem auto;
-    padding: 0 5%;
+    margin: 2rem auto;
+    padding: 0 4%;
 }
 
 .content-section {
     background-color: var(--off-white);
-    padding: 2.75rem 3rem;
+    color: #2b201e;
+    padding: 2.5rem;
     border-radius: 14px;
     box-shadow: var(--shadow-md);
-    margin-bottom: 2.75rem;
+    margin-bottom: 2.5rem;
     border: 1px solid rgba(255, 255, 255, 0.8);
     border-left: 8px solid var(--red-deep);
 }
 
-/* GALLERY & IMAGE STYLING */
+/* DARK CARD */
+.content-section.dark-card {
+    background-color: var(--charcoal-dark);
+    color: var(--off-white);
+    border-left: 8px solid var(--red-vibrant);
+}
+
+.content-section.dark-card h1,
+.content-section.dark-card h2,
+.content-section.dark-card h3 {
+    color: var(--off-white);
+}
+
+/* GALLERY & CARDS */
 .image-container,
 .gallery-card {
     background-color: var(--pure-white);
-    padding: 0.95rem;
+    padding: 0.75rem;
     border-radius: 10px;
     box-shadow: var(--shadow-sm);
     border: 1px solid rgba(0, 0, 0, 0.05);
-    display: inline-block;
     width: 100%;
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.image-container:hover,
-.gallery-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
 }
 
 .image-container img,
@@ -226,8 +218,8 @@ button:active {
 }
 
 .gallery-caption {
-    margin-top: 0.85rem;
-    font-size: 0.9rem;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 700;
     text-align: center;
     color: var(--red-deep);
@@ -238,44 +230,76 @@ button:active {
 .two-column-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 2rem;
     align-items: start;
 }
 
-.content-left {
+.content-left, .content-right {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
 }
 
-.visual-right {
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-    align-items: center;
+/* TABLE STYLING */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: var(--pure-white);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-/* Customize nyo 'to guys para hindi plain yung changes pag sa ibang screen size kasi naka fex lang sya kaya nag center lang yung ibang content*/
+th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 
+th {
+    background-color: var(--charcoal-dark);
+    color: var(--pure-white);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+/* RESPONSIVE DESIGN */
 @media screen and (max-width: 768px) {
     .nav-container {
         flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
         text-align: center;
+    }
+
+    .site-title {
+        font-size: 1.5rem;
     }
 
     .main-nav ul {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 0.75rem;
+        gap: 0.5rem;
+    }
+
+    .main-nav a {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
     }
 
     .two-column-layout {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .content-section {
-        padding: 1.75rem 1.5rem;
-        border-left-width: 6px;
+        padding: 1.5rem 1.25rem;
+        border-left-width: 5px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
     }
 }
