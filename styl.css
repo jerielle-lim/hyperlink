@@ -74,7 +74,7 @@ a {
     /* Background Image & Overlay */
     background-image: 
         linear-gradient(rgba(125, 5, 5, 0.70), rgba(125, 5, 5, 0.70)), 
-        url('event.jpg');
+        url('nav.jpg');
     background-size: cover;        
     background-position: center;     
     background-repeat: no-repeat;
@@ -101,7 +101,7 @@ a {
     padding: 0;
 }
 
-.main-nav a, #foot {
+.main-nav a {
     color: var(--off-white);
     font-weight: 700;
     font-size: 0.9rem;
