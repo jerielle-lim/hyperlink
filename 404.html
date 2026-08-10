@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>404 | Hyperlink Club</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        :root {
+            --mauve-taupe: #a28a8d;
+            --charcoal-dark: #3e2f2c;
+            --red-vibrant: #b32e2c;
+            --red-deep: #7d0505;
+            --off-white: #eeeeee;
+            --pure-white: #ffffff;
+
+            --shadow-lg: 0 14px 30px rgba(125, 5, 5, 0.22);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 2rem;
+
+            font-family:
+                "Lucida Sans",
+                "Lucida Sans Regular",
+                "Lucida Grande",
+                Geneva,
+                sans-serif;
+
+            background-color: var(--mauve-taupe);
+            color: var(--charcoal-dark);
+
+            text-align: center;
+        }
+
+        .error-container {
+            width: 100%;
+            max-width: 700px;
+
+            background-color: var(--off-white);
+
+            padding: 4rem 2.5rem;
+
+            border-radius: 18px;
+
+            border-left: 8px solid var(--red-deep);
+
+            box-shadow: var(--shadow-lg);
+
+            animation: appear 0.6s ease;
+        }
+
+        .logo {
+            width: 110px;
+            height: 110px;
+
+            object-fit: contain;
+
+            margin-bottom: 1.5rem;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .error-code {
+            font-size: clamp(5rem, 15vw, 9rem);
+
+            line-height: 1;
+
+            font-weight: 900;
+
+            color: var(--red-deep);
+
+            letter-spacing: 5px;
+
+            margin-bottom: 1rem;
+
+            text-shadow:
+                3px 3px 0 rgba(125, 5, 5, 0.12);
+        }
+
+        h1 {
+            color: var(--red-deep);
+
+            font-size: clamp(1.5rem, 4vw, 2.3rem);
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+
+            line-height: 1.7;
+
+            max-width: 520px;
+
+            margin: 0 auto 2rem;
+
+            color: #3e2f2c;
+        }
+
+        .network-message {
+            font-weight: 700;
+
+            color: var(--red-deep);
+        }
+
+        .home-button {
+            display: inline-block;
+
+            padding: 0.9rem 2rem;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #8a1313 0%,
+                    #b02323 45%,
+                    #666666 100%
+                );
+
+            color: var(--pure-white);
+
+            border: 1px solid rgba(0, 0, 0, 0.5);
+
+            border-radius: 25px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            text-decoration: none;
+
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.3),
+                inset 0 2px 4px rgba(255, 255, 255, 0.25);
+
+            transition:
+                transform 0.2s ease,
+                filter 0.2s ease;
+        }
+
+        .home-button:hover {
+            filter: brightness(1.15);
+
+            transform: translateY(-3px);
+        }
+
+        .home-button:active {
+            transform: translateY(0);
+        }
+
+        .technical-note {
+            margin-top: 2rem;
+
+            font-size: 0.75rem;
+
+            opacity: 0.65;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+
+            body {
+                padding: 1rem;
+            }
+
+            .error-container {
+                padding: 3rem 1.5rem;
+
+                border-left-width: 5px;
+            }
+
+            .logo {
+                width: 90px;
+                height: 90px;
+            }
+
+            .error-code {
+                letter-spacing: 2px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .error-container {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="error-container">
+
+        <img
+            src="logo.png"
+            alt="Hyperlink Club Logo"
+            class="logo"
+        >
+
+        <div class="error-code">
+            404
+        </div>
+
+        <h1>
+            Page Not Found
+        </h1>
+
+        <p>
+            Looks like this page got disconnected from the network.
+            The page you're looking for may have been moved,
+            removed, or the link may be incorrect.
+        </p>
+
+        <p class="network-message">
+            Let's get you back online.
+        </p>
+
+        <a
+            href="index.html"
+            class="home-button"
+        >
+            ← Return to Hyperlink
+        </a>
+
+        <p class="technical-note">
+            HYPERLINK CLUB · NAZARENE CATHOLIC SCHOOL
+        </p>
+
+    </main>
+
+</body>
+
+</html>
