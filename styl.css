@@ -70,8 +70,8 @@ a {
     width: 100%;
     min-height: 90px; 
     padding: 1.25rem 5%; 
-
-    /* Background Image & Overlay */
+    
+    /*Overlay*/
     background-image: 
         linear-gradient(rgba(125, 5, 5, 0.70), rgba(125, 5, 5, 0.70)), 
         url('nav.jpg');
@@ -183,7 +183,7 @@ button:active {
     border-left: 8px solid var(--red-deep);
 }
 
-/* DARK CARD */
+/* Brown CARD */
 .content-section.dark-card {
     background-color: var(--charcoal-dark);
     color: var(--off-white);
@@ -206,6 +206,13 @@ button:active {
     border: 1px solid rgba(0, 0, 0, 0.05);
     width: 100%;
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    overflow: hidden; 
+}
+
+.image-container:hover,
+.gallery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
 }
 
 .image-container img,
@@ -215,6 +222,13 @@ button:active {
     display: block;
     border-radius: 6px;
     object-fit: cover;
+    transition: transform var(--transition-fast); /* Smooth zoom transition */
+}
+
+/* Zooms the image */
+.image-container:hover img,
+.gallery-card:hover img {
+    transform: scale(1.05);
 }
 
 .gallery-caption {
@@ -263,7 +277,6 @@ th {
     text-transform: uppercase;
 }
 
-/* RESPONSIVE DESIGN */
 @media screen and (max-width: 768px) {
     .nav-container {
         flex-direction: column;
@@ -301,5 +314,13 @@ th {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
+    }
+    #logo-meaning .gallery-card {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    #logo-meaning .gallery-card img {
+        max-height: 350px;
     }
 }
