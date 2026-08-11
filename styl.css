@@ -276,6 +276,36 @@ th {
     font-size: 0.85rem;
     text-transform: uppercase;
 }
+.back-to-top {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--red-deep);
+    color: white;
+
+    border-radius: 50%;
+
+    box-shadow: var(--shadow-md);
+
+    font-size: 1.3rem;
+    font-weight: bold;
+
+    z-index: 999;
+}
+
+.back-to-top:hover {
+    background: var(--red-vibrant);
+    transform: translateY(-3px);
+}
+
 
 @media screen and (max-width: 768px) {
     .nav-container {
