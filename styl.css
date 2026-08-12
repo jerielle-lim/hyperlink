@@ -50,11 +50,15 @@ a {
     transition: opacity var(--transition-fast);
 }
 
-/* HEADER & TOP NAVIGATION */
+
+/* =========================================================
+   HEADER & TOP NAVIGATION
+   ========================================================= */
+
 .site-header {
     background-color: var(--red-deep);
     color: var(--off-white);
-    padding: 0; 
+    padding: 0;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -68,15 +72,15 @@ a {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    min-height: 90px; 
-    padding: 1.25rem 5%; 
-    
-    /*Overlay*/
-    background-image: 
-        linear-gradient(rgba(125, 5, 5, 0.70), rgba(125, 5, 5, 0.70)), 
+    min-height: 90px;
+    padding: 1.25rem 5%;
+
+    /* Overlay */
+    background-image:
+        linear-gradient(rgba(125, 5, 5, 0.70), rgba(125, 5, 5, 0.70)),
         url('nav.jpg');
-    background-size: cover;        
-    background-position: center;     
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     background-color: var(--red-deep);
 }
@@ -89,7 +93,7 @@ a {
     letter-spacing: 2.5px;
     margin: 0;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    white-space: nowrap; 
+    white-space: nowrap;
 }
 
 .main-nav ul {
@@ -111,8 +115,8 @@ a {
     border-radius: 6px;
     transition: background-color var(--transition-fast), color var(--transition-fast);
     display: inline-block;
-    white-space: nowrap; 
-    line-height: 1.2; 
+    white-space: nowrap;
+    line-height: 1.2;
     text-align: center;
 }
 
@@ -122,7 +126,11 @@ a {
     color: var(--pure-white);
 }
 
-/* BUTTON STYLES */
+
+/* =========================================================
+   BUTTON STYLES
+   ========================================================= */
+
 .btn,
 button,
 input[type="submit"],
@@ -137,19 +145,29 @@ input[type="button"] {
     letter-spacing: 1px;
     color: var(--pure-white);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.6); 
-    border-radius: 25px; 
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-radius: 25px;
     cursor: pointer;
     overflow: hidden;
     z-index: 1;
 
-    background: linear-gradient(120deg, #8a1313 0%, #b02323 25%, #666666 75%, #1f1f1f 100%);
-    box-shadow:
-        0 4px 8px rgba(0, 0, 0, 0.4), 
-        inset 0 3px 4px rgba(255, 255, 255, 0.3), 
-        inset 0 -3px 6px rgba(0, 0, 0, 0.7); 
+    background: linear-gradient(
+        120deg,
+        #8a1313 0%,
+        #b02323 25%,
+        #666666 75%,
+        #1f1f1f 100%
+    );
 
-    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.4),
+        inset 0 3px 4px rgba(255, 255, 255, 0.3),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.7);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
 }
 
 .btn:hover,
@@ -165,7 +183,11 @@ button:active {
     transform: translateY(0);
 }
 
-/* MAIN LAYOUT */
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
 .main-content {
     max-width: 1200px;
     margin: 2rem auto;
@@ -183,7 +205,11 @@ button:active {
     border-left: 8px solid var(--red-deep);
 }
 
-/* Brown CARD */
+
+/* =========================================================
+   BROWN CARD
+   ========================================================= */
+
 .content-section.dark-card {
     background-color: var(--charcoal-dark);
     color: var(--off-white);
@@ -196,7 +222,11 @@ button:active {
     color: var(--off-white);
 }
 
-/* GALLERY & CARDS */
+
+/* =========================================================
+   GALLERY & CARDS
+   ========================================================= */
+
 .image-container,
 .gallery-card {
     background-color: var(--pure-white);
@@ -205,8 +235,10 @@ button:active {
     box-shadow: var(--shadow-sm);
     border: 1px solid rgba(0, 0, 0, 0.05);
     width: 100%;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    overflow: hidden; 
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+    overflow: hidden;
 }
 
 .image-container:hover,
@@ -222,8 +254,9 @@ button:active {
     display: block;
     border-radius: 6px;
     object-fit: cover;
-    transition: transform var(--transition-fast); /* Smooth zoom transition */
+    transition: transform var(--transition-fast);
 }
+
 
 /* Zooms the image */
 .image-container:hover img,
@@ -240,7 +273,11 @@ button:active {
     letter-spacing: 0.5px;
 }
 
-/* TWO-COLUMN LAYOUT */
+
+/* =========================================================
+   TWO-COLUMN LAYOUT
+   ========================================================= */
+
 .two-column-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -248,13 +285,18 @@ button:active {
     align-items: start;
 }
 
-.content-left, .content-right {
+.content-left,
+.content-right {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
 }
 
-/* TABLE STYLING */
+
+/* =========================================================
+   TABLE STYLING
+   ========================================================= */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -264,7 +306,8 @@ table {
     overflow: hidden;
 }
 
-th, td {
+th,
+td {
     padding: 0.75rem 1rem;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -276,6 +319,12 @@ th {
     font-size: 0.85rem;
     text-transform: uppercase;
 }
+
+
+/* =========================================================
+   BACK TO TOP BUTTON
+   ========================================================= */
+
 .back-to-top {
     position: fixed;
     right: 25px;
@@ -307,7 +356,77 @@ th {
 }
 
 
+/* =========================================================
+   WIDE SCREEN / DESKTOP
+   Makes content wider and gallery cards uniform
+   ========================================================= */
+
+@media screen and (min-width: 1000px) {
+
+    /* Wider overall content on computers and monitors */
+    .main-content {
+        max-width: 1650px;
+        width: 92%;
+    }
+
+    /* Make all cards equal height */
+    .gallery-card,
+    .image-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Make all gallery images the same size */
+    .gallery-card img,
+    .image-container img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    /* Keep captions aligned */
+    .gallery-caption {
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0;
+        padding: 0.65rem 0.4rem 0.2rem;
+    }
+
+    /* Allow sections to use the wider layout */
+    .content-section {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   EXTRA-WIDE SCREENS / TV / LARGE MONITORS
+   ========================================================= */
+
+@media screen and (min-width: 1600px) {
+
+    .main-content {
+        max-width: 1750px;
+        width: 94%;
+    }
+
+    .gallery-card img,
+    .image-container img {
+        height: 280px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE / TABLET
+   ========================================================= */
+
 @media screen and (max-width: 768px) {
+
     .nav-container {
         flex-direction: column;
         gap: 1rem;
@@ -345,6 +464,7 @@ th {
         overflow-x: auto;
         white-space: nowrap;
     }
+
     #logo-meaning .gallery-card {
         width: 100% !important;
         max-width: 100% !important;
@@ -353,4 +473,4 @@ th {
     #logo-meaning .gallery-card img {
         max-height: 350px;
     }
-}
+    }
