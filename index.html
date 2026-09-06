@@ -1,165 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hyperlink Club | Nazarene Catholic School</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="styl.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Hyperlink Club</title>
+  <link href="styl.css" rel="stylesheet">
+  <script defer src="script.js"></script>
+
+  <style>
+    
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      border: none;
+      background: linear-gradient(135deg, var(--maroon-deep) 0%, var(--maroon-primary) 55%, var(--maroon-vibrant) 100%);
+    }
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.16) 1px, transparent 1px);
+      background-size: 18px 18px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .hero-panel > * { position: relative; z-index: 1; }
+    .hero-panel h2 { color: var(--maroon-light) !important; font-size: 1.9rem; letter-spacing: .3px; }
+    .hero-panel p { color: rgba(255,255,255,0.92); }
+    .hero-panel details { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18); }
+    .hero-panel summary { color: var(--maroon-light); }
+    .hero-panel .details-content p { color: rgba(255,255,255,0.85); }
+    .hero-panel .btn { background: var(--maroon-light); color: var(--maroon-deep); box-shadow: 0 4px 14px rgba(0,0,0,0.3); }
+    .hero-panel .btn-secondary { background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.4); }
+
+    /* Section labels */
+    .section-label {
+      text-align: center; text-transform: uppercase; letter-spacing: 2px;
+      font-size: .8rem; font-weight: bold; color: var(--maroon-primary);
+      margin: 0 0 .4rem;
+    }
+    .section-title { text-align: center; margin-bottom: 1.6rem; color: var(--maroon-deep); }
+
+    /* Feature strip (4-up icon row) */
+    .feature-strip {
+      background: var(--glass-dark);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--glass-shadow);
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1.6rem;
+      text-align: center;
+    }
+    .feature-icon {
+      width: 54px; height: 54px; margin: 0 auto .8rem;
+      border-radius: 50%; border: 1.5px solid var(--maroon-light);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--maroon-light);
+    }
+    .feature-grid h4 { color: #fff; font-size: 1rem; margin-bottom: .4rem; }
+    .feature-grid p { color: rgba(255,255,255,0.72); font-size: .85rem; line-height: 1.5; }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .service-card {
+      position: relative; overflow: hidden;
+      border-radius: var(--radius-lg);
+      padding: 1.7rem;
+      box-shadow: var(--glass-shadow);
+      transition: var(--transition);
+    }
+    .service-card:hover { transform: translateY(-4px); }
+    .service-card h4 { margin: 1rem 0 .4rem; font-size: 1.05rem; }
+    .service-card p { font-size: .85rem; line-height: 1.5; }
+    .service-icon {
+      width: 46px; height: 46px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.22);
+    }
+    .service-card.hex .service-icon {
+      border-radius: 0;
+      clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%);
+    }
+
+    .tone-cream   { background: var(--maroon-light); color: var(--maroon-deep); }
+    .tone-cream .service-icon { background: var(--maroon-primary); color: #fff; }
+    .tone-primary { background: linear-gradient(160deg, var(--maroon-primary), var(--maroon-vibrant)); color: #fff; }
+    .tone-vibrant { background: linear-gradient(160deg, var(--maroon-vibrant), var(--maroon-primary)); color: #fff; }
+    .tone-deep    { background: linear-gradient(160deg, var(--maroon-deep), #1c0005); color: #fff; }
+
+    .photo-card {
+      background: linear-gradient(160deg, var(--maroon-deep), var(--maroon-primary));
+      color: #fff; display: flex; flex-direction: column; justify-content: flex-end; min-height: 190px;
+    }
+    .photo-card::before {
+      content: ""; position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.18) 1px, transparent 1px);
+      background-size: 14px 14px; opacity: .6;
+    }
+    .photo-card .service-icon { background: rgba(255,255,255,0.18); margin-bottom: .8rem; }
+    .photo-card > * { position: relative; z-index: 1; }
+  </style>
 </head>
-
 <body>
+  <header class="site-header">
+  <div class="nav-container">
+    <h1 style="color:#fff; font-size:1.2rem; display:flex; align-items:center; gap:10px;">
+      <img src="logo.png" alt="HL Logo" style="width:30px;"> HYPERLINK
+    </h1>
+    
+    <!-- Hamburger Button -->
+    <button class="hamburger-btn" aria-label="Open Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+</header>
 
-    <header class="site-header header-title">
-        <div class="nav-container">
-            <h1 class="site-title">
-                <img src="logo.png" alt="Hyperlink Logo" width="auto" height="60"
-                    style="vertical-align: middle; margin-right: 10px; border-radius: 8px; box-shadow: var(--shadow-sm);">
-                HYPERLINK
-            </h1>
-            <nav class="main-nav navbar">
-                <ul>
-                    <li><a href="/hyperlink/" class="active">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="resource.html">Resources</a></li>
-                    <li><a href="gallery.html">Events & Gallery</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<!-- Full-Screen Overlay Menu -->
+<div class="overlay-menu">
+  <div class="overlay-header">
+    <h1 style="color:#fff; font-size:1.2rem; display:flex; align-items:center; gap:10px;">
+      <img src="logo.png" alt="HL Logo" style="width:30px;"> HYPERLINK
+    </h1>
+    <button class="close-btn" aria-label="Close Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <nav class="overlay-nav">
+    <ul>
+      <!-- Note: Move the class="active" depending on the current file -->
+      <li><a href="index.html" class="active">HOME</a></li>
+      <li><a href="about.html">ABOUT US</a></li>
+      <li><a href="resource.html">RESOURCES</a></li>
+      <li><a href="gallery.html">EVENTS & GALLERY</a></li>
+      <li><a href="contact.html">CONTACT US</a></li>
+    </ul>
+  </nav>
+</div>
 
-    <main class="main-content">
+  <main class="main-content">
+    <div class="glass-panel hero-panel">
+      <h2 style="margin-bottom:1rem;">WELCOME TO HYPERLINK</h2>
+      <div class="clearfix">
+        <p><strong>HYPERLINK: "Connecting Minds, Building the Digital Future."</strong> As the premier Information and Communications Technology (ICT) and multimedia backbone of Nazarene Catholic School, our mission is to empower student leaders, educators, and creative thinkers across Grades 4 through 12.</p>
 
-        <section id="home" class="content-section">
-            <h2>Welcome to Hyperlink</h2>
-            <p>
-                <strong>HYPERLINK: "Connecting Minds, Building the Digital Future."</strong> As the premier Information
-                and Communications Technology (ICT) and multimedia backbone of Nazarene Catholic School, our mission is
-                to empower student leaders, educators, and creative thinkers across Grades 4 through 12. We serve as a
-                centralized digital hub that bridges theoretical classroom learning with real-world technical execution.
-                By streamlining multimedia production, presentation deck architecture, school system support, and event
-                documentation, we eliminate communication bottlenecks and elevate campus media standards. Whether you
-                are an aspiring frontend developer writing your first HTML boilerplate, a visual artist crafting
-                publicity materials, or a digital photographer mastering camera exposure settings, Hyperlink provides
-                the structured mentorship, cutting-edge tools, and collaborative environment necessary to transform
-                everyday tech-users into analytical tech-thinkers.
-            </p>
-            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="about.html"><button type="button" class="btn">Learn More</button></a>
-                <a href="contact.html"><button type="button" class="btn">Get Started</button></a>
-            </div>
-            <p style="margin-top: 1.25rem;">
-                <strong>Presentation — Logo Designing — Pubmat Designing — Photography — Coding</strong>
-            </p>
-        </section>
-        
-        <section id="logo-meaning" class="content-section">
-
-    <div class="image-container gallery-card"
-         style="
-            width: 60%;
-            max-width: 650px;
-            margin: 0 auto 1rem auto;
-            padding: 0.6rem;
-            background-color: var(--pure-white);
-            border-radius: 10px;
-            box-shadow: var(--shadow-sm);
-         ">
-
-        <img src="logo.png"
-             alt="Hyperlink Club Logo"
-             style="
-                width: 100%;
-                height: auto;
-                max-height: 400px;
-                object-fit: contain;
-                display: block;
-                border-radius: 6px;
-             ">
-
+        <details style="margin-top:1rem;">
+          <summary>Read Full Introduction</summary>
+          <div class="details-content">
+            <p style="margin-bottom:0.5rem;">We serve as a centralized digital hub that bridges theoretical classroom learning with real-world technical execution. By streamlining multimedia production, presentation deck architecture, school system support, and event documentation, we eliminate communication bottlenecks and elevate campus media standards.</p>
+            <p>Whether you are an aspiring frontend developer writing your first HTML boilerplate, a visual artist crafting publicity materials, or a digital photographer mastering camera exposure settings, Hyperlink provides the structured mentorship, cutting-edge tools, and collaborative environment necessary to transform everyday tech users into analytical tech thinkers.</p>
+          </div>
+        </details>
+      </div>
+      <div style="margin-top:1rem; display:flex; gap:1rem;">
+        <a href="about.html" class="btn">Learn More</a>
+        <a href="contact.html" class="btn btn-secondary">Get Started</a>
+      </div>
+      <p style="margin-top:1rem; font-size:0.9rem; font-weight:bold;">Presentation — Logo Designing — Pubmat Designing — Photography — Coding</p>
     </div>
 
-    <h2>The Meaning Behind Our Logo</h2>
+    <p class="section-label">What We Offer</p>
+    <h3 class="section-title">Our Creative &amp; Technical Pillars</h3>
 
-    <p>
-        The Hyperlink logo is shaped like a computer monitor, representing
-        technology and computer-based activities. Inside, a CPU-inspired
-        design forms the letters “H” and “L,” symbolizing Hyperlink and its
-        connection to computing.
-        <br><br>
-        The bold geometric design represents innovation, precision, and
-        digital connectivity, reflecting Hyperlink’s goal of encouraging
-        students to explore technology, develop computer skills, and
-        participate in engaging IT-related activities.
-    </p>
+    <section class="feature-strip">
+      <div class="feature-grid">
+        <div>
+          <div class="feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <h4>Our Mission</h4>
+          <p>Bridging classroom learning with real digital execution across NCS.</p>
+        </div>
+        <div>
+          <div class="feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>
+          </div>
+          <h4>Digital Literacy</h4>
+          <p>Hands-on training in coding, design, and multimedia production.</p>
+        </div>
+        <div>
+          <div class="feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L15.5 5.5a2 2 0 0 1 2.8 0l.7.7a2 2 0 0 1 0 2.8L8.5 19 4 20z"/><path d="M13.5 7.5l3 3"/></svg>
+          </div>
+          <h4>Creative Craft</h4>
+          <p>Mentorship in logo, pubmat, and presentation design.</p>
+        </div>
+        <div>
+          <div class="feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+          </div>
+          <h4>Ongoing Growth</h4>
+          <p>Continuous workshops that sharpen every member's skill set.</p>
+        </div>
+      </div>
+    </section>
 
-</section>
+    <section class="service-grid">
+      <div class="service-card tone-cream">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M6 13l3.5-3.5L12 12l5-5"/><path d="M12 16v4"/><path d="M8 20h8"/></svg>
+        </div>
+        <h4>Presentation Design</h4>
+        <p>Slide decks built for clarity, structure, and campus-ready storytelling.</p>
+      </div>
 
-        <section id="typography-feature" class="content-section">
-            <h2>The Lucida Sans Typography</h2>
-            <p>
-                In accordance with our modern design tokens and institutional commitment to clarity, Hyperlink utilizes
-                <strong>Lucida Sans</strong> as its foundational typeface across all headings, body paragraphs, and UI
-                components. Designed for exceptional legibility on digital displays and high-resolution interfaces,
-                Lucida Sans features generous x-heights, open apertures, and balanced letter-spacing. This geometric yet
-                humanist sans-serif ensures that complex technical documentation—ranging from C# .NET reviewers to CSS
-                selector cheat sheets—remains approachable and scannable for students of all grade levels. By pairing
-                uppercase 700-weight headings with clean paragraph structures, our interface achieves an aesthetic vibe
-                of decency that mirrors professional software engineering environments.
-            </p>
-        </section>
+      <div class="service-card tone-primary">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8.5" r="4.5"/><rect x="11.5" y="11.5" width="9" height="9" rx="2"/></svg>
+        </div>
+        <h4>Logo Designing</h4>
+        <p>Distinct visual marks that give clubs and events a lasting identity.</p>
+      </div>
 
-        <section id="information" class="content-section">
-            <h2>Campus Location & Recent News</h2>
-            <p>
-                As an on-campus club, Hyperlink operates directly out of the school's computer lab, where we coordinate
-                digital campaigns through the NCS Facebook Page, and multimedia coverage for institutional events.
+      <div class="service-card tone-vibrant">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+        <h4>Pubmat Designing</h4>
+        <p>Eye-catching publicity materials for every campus announcement.</p>
+      </div>
 
-            <ul style="margin-bottom: 1.5rem; list-style-position: inside;">
-                <li><strong>Address:</strong> 1053 R. Hidalgo Street, Quiapo, Manila</li>
-                <li><strong>Number:</strong> 0999-999-9999</li>
-                <li><strong>Email:</strong> hyperlink@gmail.com</li>
-            </ul>
+      <div class="service-card photo-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.6-2h6.8L17 8h3v11H4z"/><circle cx="12" cy="13.2" r="3.4"/></svg>
+        </div>
+        <h4>Photography</h4>
+        <p>Documenting campus life and events with a trained eye.</p>
+      </div>
 
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
-                <div class="image-container gallery-card">
-                    <img src="event1.png" alt="Campus Event 1">
-                    <div class="gallery-caption">Friday Fun Fest | Hyperlink Club Photobooth</div>
-                </div>
-                <div class="image-container gallery-card">
-                    <img src="https://scontent.fmnl44-1.fna.fbcdn.net/v/t39.99422-6/762886072_1057826016824354_4098111458655802248_n.png?stp=dst-jpg_tt6&cstp=mx1920x1080&ctp=s1920x1080&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHaATs6ZGeaNdNCIHXZabYhcdvMPzbzdhNx28w_NvN2E_atbWK6de2pLjFpYYkz5yCIGt1j_rvq4Y5qhWERBoHL&_nc_ohc=9_O9PJdWBgsQ7kNvwGtRYlC&_nc_oc=AdpzLblAfnhgZBYCBSnwZpvD5cTN50ExrTqgQJj0q0HL1C7U8iVAlHLDpOXU-2fXALQ4dxAO3lhCrgexue7363Fp&_nc_zt=14&_nc_ht=scontent.fmnl44-1.fna&_nc_gid=6pxTODMxryb33kKp_v6WJA&_nc_ss=7b2a8&oh=00_AQH9H1HrxOa1mBSxjkgsU8es7yo2n8uKNWV4in-nTgSlsg&oe=6A7DF410"
-                        alt="Campus Event 2">
-                    <div class="gallery-caption">Slogan & Poster Making Contest</div>
-                </div>
-                <div class="image-container gallery-card">
-                    <img src="https://scontent.fmnl44-1.fna.fbcdn.net/v/t1.15752-9/753150147_1485460510267203_4012663316525380671_n.jpg?stp=dst-jpg_tt6&cstp=mx3024x4032&ctp=s2048x2048&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeFYqHUkUAu-11wGse4KK_1Bxedn-csfsIDF52f5yx-wgPs5DQvvCDsrlH35dohTdI2mhnzYVZICy_zYHrizpHeV&_nc_ohc=iIYShEcj0KUQ7kNvwHSmYGL&_nc_oc=AdpsZUlhuenofWFSYRcJ6QsDVdjo6VeCPFkYBFMQYStVNIfPVSZ7c3kmobk6jI_JRMzl6KVW9vmfqEbVRo_DBKqA&_nc_zt=23&_nc_ht=scontent.fmnl44-1.fna&_nc_ss=7b2a8&oh=03_Q7cD6AElcbjc5llzgM_f6JVnjOIlhmaynrPdsLpDS1PlYSZUrQ&oe=6A9F9A35"
-                        alt="Campus Event 3">
-                    <div class="gallery-caption">Bulletin Board Creation</div>
-                </div>
-            </div>
+      <div class="service-card tone-deep">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/></svg>
+        </div>
+        <h4>Coding &amp; Development</h4>
+        <p>From HTML boilerplates to full school system support.</p>
+      </div>
 
-            <h3>Find Us on Campus:</h3>
-            <div style="border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-sm); margin-top: 0.75rem;">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.168784742749!2d120.98292851484251!3d14.598586989803138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ca1d0b7d34c5%3A0x2370776b70125cf1!2sNazarene%20Catholic%20School!5e0!3m2!1sen!2sph!4v1689240832100!5m2!1sen!2sph"
-                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-        </section>
+      <div class="service-card tone-cream hex">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg>
+        </div>
+        <h4>Events &amp; Documentation</h4>
+        <p>Full multimedia coverage that keeps every milestone on record.</p>
+      </div>
+    </section>
 
-    </main>
-<a href="#top" class="back-to-top">↑</a>
-    <footer
-        style="background-color: var(--charcoal-dark); color: white; text-align: center; padding: 2rem 5%; margin-top: 4rem;">
-        <p id="foot">&copy; 2026 Hyperlink Club | Nazarene Catholic School. Connecting Minds, Building the Digital Future.</p>
-    </footer>
-        
+    <div class="two-column-layout">
+      <div class="glass-panel">
+        <img src="logo.png" alt="Hyperlink Logo Meaning" style="width:100%; margin-bottom:1rem; background:#fff; padding:1rem;">
+        <details>
+          <summary>The Meaning Behind Our Logo</summary>
+          <div class="details-content">
+            <p>The Hyperlink logo is shaped like a computer monitor, representing technology and computer-based activities. Inside, a CPU-inspired design forms the letters "H" and "L," symbolizing Hyperlink and its connection to computing. The bold geometric design represents innovation, precision, and digital connectivity.</p>
+          </div>
+        </details>
+        <details>
+          <summary>The Lucida Sans Typography</summary>
+          <div class="details-content">
+            <p>In accordance with our modern design tokens and institutional commitment to clarity, Hyperlink utilizes <strong>Lucida Sans</strong> as its foundational typeface across all headings, body paragraphs, and UI components. Designed for exceptional legibility on digital displays.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="glass-panel dark">
+        <h3 style="margin-bottom:1rem; color:var(--maroon-light);">CAMPUS LOCATION & RECENT NEWS</h3>
+        <p>As an on-campus club, Hyperlink operates directly out of the school's computer lab, where we coordinate digital campaigns through the NCS Facebook Page, and multimedia coverage for institutional events.</p>
+        <ul style="margin:1rem 0 1rem 1.5rem; font-size:0.9rem;">
+          <li><strong>Address:</strong> 1053 R. Hidalgo Street, Quiapo, Manila</li>
+          <li><strong>Number:</strong> 0999-999-9999</li>
+          <li><strong>Email:</strong> hyperlink@gmail.com</li>
+        </ul>
+        <h4 style="margin-bottom:0.5rem;">Find Us On Campus:</h4>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.1234567!2d120.985!3d14.599!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDM1JzU2LjQiTiAxMjDCsDU5JzA2LjAiRQ!5e0!3m2!1sen!2sph!4v1600000000000" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Hyperlink Club | Nazarene Catholic School. Connecting Minds, Building the Digital Future.</p>
+  </footer>
 </body>
-
 </html>
-
-                    
