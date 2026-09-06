@@ -1,254 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us & Directory | Hyperlink Club</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="styl.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Hyperlink Club</title>
+  <link href="styl.css" rel="stylesheet">
+  <script defer src="script.js"></script>
 </head>
-
 <body>
+  <header class="site-header">
+  <div class="nav-container">
+    <h1 style="color:#fff; font-size:1.2rem; display:flex; align-items:center; gap:10px;">
+      <img src="logo.png" alt="HL Logo" style="width:30px;"> HYPERLINK
+    </h1>
+    
+    <!-- Hamburger Button -->
+    <button class="hamburger-btn" aria-label="Open Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+</header>
 
-    <header class="site-header header-title">
-        <div class="nav-container">
-            <h1 class="site-title">
-                <img src="logo.png" alt="Hyperlink Logo" width="auto" height="60"
-                    style="vertical-align: middle; margin-right: 10px; border-radius: 8px; box-shadow: var(--shadow-sm);">
-                HYPERLINK
-            </h1>
-            <nav class="main-nav navbar">
-                <ul>
-                    <li><a href="/hyperlink/">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="resource.html">Resources</a></li>
-                    <li><a href="gallery.html">Events & Gallery</a></li>
-                    <li><a href="contact.html" class="active">Contact Us</a></li>
-                </ul>
-            </nav>
+<!-- Full-Screen Overlay Menu -->
+<div class="overlay-menu">
+  <div class="overlay-header">
+    <h1 style="color:#fff; font-size:1.2rem; display:flex; align-items:center; gap:10px;">
+      <img src="logo.png" alt="HL Logo" style="width:30px;"> HYPERLINK
+    </h1>
+    <button class="close-btn" aria-label="Close Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <nav class="overlay-nav">
+    <ul>
+      
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="about.html">ABOUT US</a></li>
+      <li><a href="resource.html">RESOURCES</a></li>
+      <li><a href="gallery.html">EVENTS & GALLERY</a></li>
+      <li><a href="contact.html" class="active">CONTACT US</a></li>
+    </ul>
+  </nav>
+</div>
+
+
+  <main class="main-content">
+    <div class="two-column-layout">
+      <div class="glass-panel">
+        <h3 style="color:var(--maroon-primary); margin-bottom:1rem;">ONLINE INQUIRY & SERVICE REQUEST FORM</h3>
+        <p style="font-size:0.9rem; margin-bottom:1.5rem;">Need publicity materials (pubmats) for school organization, event photography coverage, or programming assistance? Complete our online form below. All submissions are logged and reviewed within 24 hours.</p>
+        
+        <form class="styled-form">
+          <div class="form-group">
+            <label>FULL NAME:</label>
+            <input type="text" placeholder="e.g., Juan Dela Cruz" required>
+          </div>
+          <div class="form-group">
+            <label>INSTITUTIONAL EMAIL ADDRESS:</label>
+            <input type="email" placeholder="e.g., hyperlink@gmail.com" required>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div class="form-group">
+              <label>YOUR CLASSIFICATION:</label>
+              <select required><option>Select classification...</option><option>Student</option><option>Faculty</option></select>
+            </div>
+            <div class="form-group">
+              <label>INQUIRY TYPE:</label>
+              <select required><option>Select nature of request...</option><option>Service Request</option><option>Membership</option></select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>SPECIFIC ICT SERVICES NEEDED (IF APPLICABLE):</label>
+            <div class="checkbox-group">
+              <label><input type="checkbox"> Event Photography & Camera Documentation</label>
+              <label><input type="checkbox"> Publicity Material (Pubmat) Graphic Designing</label>
+              <label><input type="checkbox"> Website Prototyping & HTML/CSS PETA Guidance</label>
+              <label><input type="checkbox"> Campus AV / System & Hardware Technical Support</label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>PROJECT DESCRIPTION / ADDITIONAL MESSAGE:</label>
+            <textarea rows="3" placeholder="Please describe event dates, project requirements, or specific technical questions..."></textarea>
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" class="btn">Submit Inquiry</button>
+            <button type="reset" class="btn btn-secondary">Clear Form</button>
+          </div>
+        </form>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:1.5rem;">
+        <div class="glass-panel dark">
+          <h3 style="color:var(--maroon-light); margin-bottom:0.5rem;">CAMPUS LOCATION & INFORMATION</h3>
+          <p style="font-size:0.9rem; margin-bottom:1rem;">The Hyperlink Club operates out of the central Information and Communications Technology (ICT) laboratory at Nazarene Catholic School.</p>
+          <ul style="font-size:0.9rem; margin-left:1rem; margin-bottom:1rem;">
+            <li><strong>Address:</strong> 1053 R. Hidalgo Street, Quiapo, Manila</li>
+            <li><strong>Campus Location:</strong> ICT Lab - Behind cafeteria</li>
+            <li><strong>Mobile Hotline:</strong> +63 999-999-9999</li>
+          </ul>
+          <p style="font-size:0.9rem;"><strong>WHERE/HOW TO CONSULT US?</strong><br>Monday - Friday: Ask our Club Officers regarding your inquiries during break time or after school hours.</p>
         </div>
-    </header>
 
-    <main class="main-content board-container">
+        <div class="glass-panel">
+          <h3 style="color:var(--maroon-primary); margin-bottom:0.5rem;">OFFICIAL SOCIAL MEDIA</h3>
+          <p style="font-size:0.9rem; margin-bottom:1rem;">Stay connected with the Hyperlink Club online. Follow our verified page for latest updates, including Trivia, student photography, and upcoming workshop announcements.</p>
+          <div style="text-align:center; padding:1.5rem; background:rgba(0,0,0,0.05); border-radius:8px;">
+            <p style="font-weight:bold; margin-bottom:1rem;">OFFICIAL FACEBOOK PAGE</p>
+            <a href="https://www.facebook.com/share/1F4fH3bi9b/" class="btn" style="background:#1877F2;">Follow On FB</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
-        <section id="information" class="content-section card">
-            <div class="pin"></div>
-            <h2>CAMPUS LOCATION & INFORMATION</h2>
-            <p>
-                The Hyperlink Club operates out of the central Information and Communications Technology (ICT)
-                laboratory at Nazarene Catholic School. Whether you are a student leader inquiring about
-                multimedia production, a faculty member requesting technical event coverage, or a prospective member
-                seeking consultation, our doors and digital channels are always open.
-            </p>
-
-            <div class="two-column-layout" style="margin-top: 1.5rem; margin-bottom: 2rem;">
-                <div class="content-left">
-                    <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Official Contact Details</h3>
-                    <ul class="styled-list" style="list-style-position: inside; margin-bottom: 1.5rem;">
-                        <li><strong>Address:</strong> 1053 R. Hidalgo Street, Quiapo, Manila</li>
-                        <li><strong>Campus Location:</strong> ICT Lab - Behind cafeteria</li>
-                        <li><strong>Mobile Hotline:</strong> +63 999-999-9999 (Club Moderator)</li>
-                        <li><strong>Official Email:</strong> hyperlink@gmail.com</li>
-                    </ul>
-
-                    <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Where/how to consult us?</h3>
-                    <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">
-                        <strong>Monday – Friday:</strong> Ask our Club Officers or Club Moderator regarding your inquiries during break time or after school hours.
-                    </p>
-                </div>
-
-                <div class="visual-right">
-                    <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; width: 100%;">Find Us on Campus:</h3>
-                    <div class="map-wrapper"
-                        style="width: 100%; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid #ddd;">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.168784742749!2d120.98292851484251!3d14.598586989803138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ca1d0b7d34c5%3A0x2370776b70125cf1!2sNazarene%20Catholic%20School!5e0!3m2!1sen!2sph!4v1689240832100!5m2!1sen!2sph"
-                            width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="directory" class="content-section card">
-            <div class="pin"></div>
-            <h2>EXECUTIVE & COMMITTEE DIRECTORY</h2>
-            <p>
-                To ensure streamlined communication across our student alliance, inquiries are routed directly to the
-                appropriate committee head or grade-level representative. Use the directory below to
-                connect with specific project leads.
-            </p>
-
-            <div class="table-wrapper" style="overflow-x: auto; margin-top: 1.5rem;">
-                <table border="1" cellpadding="12" class="custom-table"
-                    style="width: 100%; border-collapse: collapse; text-align: left; background-color: #ffffff;">
-                    <thead>
-                        <tr style="background-color: var(--charcoal-dark); color: var(--off-white);">
-                            <th style="padding: 12px;">Committee Heads</th>
-                            <th style="padding: 12px;">Grade Level Representatives</th>
-                            <th style="padding: 12px;">Specialized Technical Leads</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="padding: 12px; vertical-align: top;">
-                                <ul style="margin-left: 1.25rem; line-height: 1.8;">
-                                    <li><strong>Head of Design:</strong> Lead UI/UX & Pubmat Architecture</li>
-                                    <li><strong>Head of Photography:</strong> Technical Equipment & Docu Lead</li>
-                                    <li><strong>Head of Programming:</strong> Web Dev & System Support</li>
-                                    <li><strong>Logistics Chair:</strong> Laboratory & Hardware Maintenance</li>
-                                </ul>
-                            </td>
-                            <td style="padding: 12px; vertical-align: top;">
-                                <ul style="margin-left: 1.25rem; line-height: 1.8;">
-                                    <li><strong>Grade 12 Representative:</strong> Senior High ICT
-                                    </li>
-                                    <li><strong>Grade 11 Representative:</strong> SHS Foundation Representative</li>
-                                    <li><strong>Grade 9–10 Representative:</strong> Junior High School Representative
-                                    </li>
-                                    <li><strong>Grade 4–8 Representative:</strong> Grade School Tech Aspirants Lead</li>
-                                </ul>
-                            </td>
-                            <td style="padding: 12px; vertical-align: top;">
-                                <ul style="margin-left: 1.25rem; line-height: 1.8;">
-                                    <li><strong>.NET Specialist:</strong> SHS Coding Review Lead
-                                    </li>
-                                    <li><strong>Frontend HTML/CSS Teacher:</strong> Phase 1 & Phase 2 PETA Lead</li>
-                                    <li><strong>Cybersecurity Lead:</strong> Cyber-Shield Bulletin Coordinator</li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="inquiries" class="content-section card">
-            <div class="pin"></div>
-            <h2>ONLINE INQUIRY & SERVICE REQUEST FORM</h2>
-            <p>
-                Need publicity materials (pubmats) for school organization, event photography coverage, or
-                programming assistance? Complete our online form below. All submissions are logged and
-                reviewed by the Hyperlink Club Executive Committee within 24 hours.
-            </p>
-
-            <form action="#" method="POST" class="styled-form"
-                style="max-width: 750px; margin: 2rem auto 0; background: #ffffff; padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid #ddd;">
-
-                <div class="form-group" style="margin-bottom: 1.5rem;">
-                    <label for="fullName"
-                        style="display: block; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.9rem;">Full
-                        Name:</label>
-                    <input type="text" id="fullName" name="fullName" required placeholder="e.g., Juan Dela Cruz"
-                        style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; font-family: inherit;">
-                </div>
-
-                <div class="form-group" style="margin-bottom: 1.5rem;">
-                    <label for="email"
-                        style="display: block; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.9rem;">Institutional
-                        Email Address:</label>
-                    <input type="email" id="email" name="email" required placeholder="e.g., hyperlink@gmail.com"
-                        style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; font-family: inherit;">
-                </div>
-
-                <div class="two-column-layout" style="gap: 1.5rem; margin-bottom: 1.5rem;">
-                    <div class="form-group">
-                        <label for="classification"
-                            style="display: block; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.9rem;">Your
-                            Classification:</label>
-                        <select id="classification" name="classification" required
-                            style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; font-family: inherit;">
-                            <option value="" disabled selected>Select classification...</option>
-                            <option value="Student - Grade 12">Grade 12 SHS Student</option>
-                            <option value="Student - Grade 11">Grade 11 SHS Student</option>
-                            <option value="Student - JHS">Junior High School Student</option>
-                            <option value="Faculty / Teacher">Faculty / Teaching Staff</option>
-                            <option value="External Organization">External Organization</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="purpose"
-                            style="display: block; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.9rem;">Inquiry
-                            Type:</label>
-                        <select id="purpose" name="purpose" required
-                            style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; font-family: inherit;">
-                            <option value="" disabled selected>Select nature of request...</option>
-                            <option value="Service Request">ICT Multimedia / Service Request</option>
-                            <option value="Club Membership">Club Membership & Enrollment</option>
-                            <option value="Workshop Registration">Workshop / Code Sprint registration
-                            </option>
-                            <option value="General Question">General Tech Inquiry</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group" style="margin-bottom: 1.5rem;">
-                    <label
-                        style="display: block; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.9rem;">Specific
-                        ICT Services Needed (If Applicable):</label>
-                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                        <label><input type="checkbox" name="services" value="Photography"> Event Photography & Camera
-                            Documentation</label>
-                        <label><input type="checkbox" name="services" value="Pubmats"> Publicity Material (Pubmat)
-                            Graphic Designing</label>
-                        <label><input type="checkbox" name="services" value="WebDev"> Website Prototyping & HTML/CSS
-                            PETA Guidance</label>
-                        <label><input type="checkbox" name="services" value="Technical"> Campus AV / System & Hardware
-                            Technical Support</label>
-                    </div>
-                </div>
-
-                <div class="form-group" style="margin-bottom: 2rem;">
-                    <label for="message"
-                        style="display: block; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.9rem;">Project
-                        Description / Additional Message:</label>
-                    <textarea id="message" name="message" rows="5"
-                        placeholder="Please describe event dates, project requirements, or specific technical questions..."
-                        style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; font-family: inherit;"></textarea>
-                </div>
-
-                <div class="form-actions" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <button type="submit" class="btn"><a href="404.html">Submit Inquiry</a></button>
-                    <button type="reset" class="btn" style="background: var(--charcoal-dark);">Clear Form</button>
-                </div>
-
-            </form>
-        </section>
-
-        <section id="socials" class="content-section card">
-            <div class="pin"></div>
-            <h2>OFFICIAL SOCIAL MEDIA</h2>
-            <p>
-                Stay connected with the Hyperlink Club online. Follow our verified page for latest updates, including
-                Trivia, student photography, and upcoming workshop
-                announcements.
-            </p>
-
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-
-                <div
-                    style="background-color: #ffffff; padding: 1.5rem; border-radius: 8px; border: 1px solid #ddd; text-align: center;">
-                    <h3 style="font-size: 1.1rem; color: var(--red-deep); margin-bottom: 0.5rem;">Official Facebook Page
-                    </h3>
-                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">
-                        Home to our official School Facebook page, where we post our publicity materials, event updates, and community announcements.
-                    </p>
-                    <a href="https://web.facebook.com/thenazarenecatholicschool" class="btn" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Follow on FB</a>
-                </div>
-
-        </section>
-
-    </main>
-<a href="#top" class="back-to-top">↑</a>
-    <footer
-        style="background-color: var(--charcoal-dark); color: var(--off-white); text-align: center; padding: 2rem 5%; margin-top: 4rem;">
-        <p id="foot">&copy; 2026 Hyperlink Club | Nazarene Catholic School. Connecting Minds, Building the Digital Future.</p>
-    </footer>
-
+  <footer class="site-footer">
+    <p>&copy; 2026 Hyperlink Club | Nazarene Catholic School. Connecting Minds, Building the Digital Future.</p>
+  </footer>
 </body>
-
 </html>
