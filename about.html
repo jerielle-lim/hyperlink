@@ -1,165 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Hyperlink Club</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="styl.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Hyperlink Club</title>
+  <link href="styl.css" rel="stylesheet">
+  <script defer src="script.js"></script>
+
+  <style>
+    .section-label {
+      text-align: center; text-transform: uppercase; letter-spacing: 2px;
+      font-size: .8rem; font-weight: bold; color: var(--maroon-primary);
+      margin: 2.2rem 0 .4rem;
+    }
+    .section-title { text-align: center; margin-bottom: 1.6rem; color: var(--maroon-deep); }
+
+    /* ---------- Floating hero + dock ---------- */
+    .spatial-hero { display: flex; gap: 1.2rem; align-items: stretch; margin-bottom: 2rem; }
+
+    .spatial-dock {
+      display: flex; flex-direction: column; gap: .8rem;
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px; padding: 1.1rem .55rem; align-items: center;
+      box-shadow: var(--glass-shadow);
+    }
+    .spatial-dock a {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.8); transition: var(--transition);
+    }
+    .spatial-dock a:hover { background: var(--maroon-vibrant); color: #fff; }
+
+    .spatial-hero-content {
+      flex: 1; position: relative; overflow: hidden; min-height: 300px;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 2.4rem; border-radius: var(--radius-lg); color: #fff;
+      background: linear-gradient(160deg, rgba(20,3,6,0.92), rgba(59,0,11,0.88));
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.08); box-shadow: var(--glass-shadow);
+    }
+    .spatial-hero-content::before,
+    .spatial-hero-content::after {
+      content: ""; position: absolute; width: 280px; height: 280px;
+      border-radius: 50%; filter: blur(75px); z-index: 0;
+    }
+    .spatial-hero-content::before { background: var(--maroon-vibrant); opacity: .5; top: -70px; right: -50px; }
+    .spatial-hero-content::after  { background: var(--maroon-light);   opacity: .16; bottom: -90px; left: 8%; }
+    .spatial-hero-content > * { position: relative; z-index: 1; }
+    .spatial-hero-content h2 { font-size: 2.1rem; margin: .8rem 0 .6rem; }
+    .spatial-hero-content p  { color: rgba(255,255,255,0.85); max-width: 600px; font-size: .95rem; margin-bottom: 1.5rem; }
+
+    /* ---------- Chips / tags ---------- */
+    .chip {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .3rem .8rem; border-radius: 999px; font-size: .72rem;
+      font-weight: bold; letter-spacing: .4px; text-transform: uppercase;
+      width: fit-content;
+    }
+    .chip-vibrant { background: var(--maroon-vibrant); color: #fff; }
+    .chip-primary { background: var(--maroon-primary); color: #fff; }
+    .chip-cream   { background: var(--maroon-light);   color: var(--maroon-deep); }
+
+    /* ---------- Pill buttons ---------- */
+    .pill-actions { display: flex; gap: .8rem; flex-wrap: wrap; }
+    .pill-btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .75rem 1.5rem; border-radius: 999px; font-weight: bold;
+      font-size: .88rem; text-decoration: none; border: none; cursor: pointer;
+      transition: var(--transition);
+    }
+    .pill-btn.solid { background: #fff; color: var(--maroon-deep); }
+    .pill-btn.ghost { background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+    .pill-btn:hover { transform: translateY(-2px); }
+
+    /* ---------- Dark floating info panels ---------- */
+    .glass-panel.spatial-panel {
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, rgba(20,3,6,0.9), rgba(59,0,11,0.86));
+      color: rgba(255,255,255,0.92);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .glass-panel.spatial-panel::before {
+      content: ""; position: absolute; width: 180px; height: 180px;
+      border-radius: 50%; background: var(--maroon-vibrant); opacity: .22;
+      filter: blur(60px); top: -50px; right: -30px; z-index: 0; pointer-events: none;
+    }
+    .glass-panel.spatial-panel > * { position: relative; z-index: 1; }
+    .glass-panel.spatial-panel p,
+    .glass-panel.spatial-panel li,
+    .glass-panel.spatial-panel strong { color: rgba(255,255,255,0.88); }
+    .glass-panel.spatial-panel .chip { margin-bottom: 1rem; }
+    .glass-panel.spatial-panel .tab-btn { color: rgba(255,255,255,0.65); }
+    .glass-panel.spatial-panel .tab-btn.active { background: var(--maroon-vibrant); color: #fff; }
+    .glass-panel.spatial-panel .tab-buttons { border-bottom-color: rgba(255,255,255,0.12); }
+
+    /* ---------- Officer "cast" cards ---------- */
+    .cast-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1.2rem; margin-top: 1rem; }
+    .cast-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-md); padding: 1.4rem 1rem; text-align: center;
+      transition: var(--transition);
+    }
+    .cast-card:hover { transform: translateY(-4px); box-shadow: var(--glass-shadow); }
+    .cast-avatar {
+      width: 60px; height: 60px; border-radius: 50%; margin: 0 auto .8rem;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: bold; font-size: 1.05rem;
+    }
+    .cast-card h5 { font-size: .92rem; margin-bottom: .5rem; color: #fff; }
+    .cast-card .chip { margin: 0 auto; }
+
+    /* ---------- Committee lists ---------- */
+    .committee-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.4rem; margin-top: 1rem; }
+    .committee-list { list-style: none; display: flex; flex-direction: column; gap: .6rem; margin-top: .8rem; }
+    .committee-list li {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm); padding: .7rem 1rem; font-size: .88rem;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 760px) {
+      .spatial-hero { flex-direction: column; }
+      .spatial-dock { flex-direction: row; width: fit-content; margin: 0 auto; border-radius: 999px; }
+      .spatial-hero-content { padding: 1.8rem; min-height: auto; }
+      .spatial-hero-content h2 { font-size: 1.6rem; }
+    }
+  </style>
 </head>
-
 <body>
+  <header class="site-header">
+  <div class="nav-container">
+    <h1 style="color:#fff; font-size:1.2rem; display:flex; align-items:center; gap:10px;">
+      <img src="logo.png" alt="HL Logo" style="width:30px;"> HYPERLINK
+    </h1>
+    
+    <!-- Hamburger Button -->
+    <button class="hamburger-btn" aria-label="Open Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+</header>
 
-    <header class="site-header header-title">
-        <div class="nav-container">
-            <h1 class="site-title">
-                <img src="logo.png" alt="Hyperlink Logo" width="auto" height="60"
-                    style="vertical-align: middle; margin-right: 10px; border-radius: 8px; box-shadow: var(--shadow-sm);">
-                HYPERLINK
-            </h1>
-            <nav class="main-nav navbar">
-                <ul>
-                    <li><a href="/hyperlink/">Home</a></li>
-                    <li><a href="about.html" class="active">About Us</a></li>
-                    <li><a href="resource.html">Resources</a></li>
-                    <li><a href="gallery.html">Events & Gallery</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </nav>
+<!-- Full-Screen Overlay Menu -->
+<div class="overlay-menu">
+  <div class="overlay-header">
+    <h1 style="color:#fff; font-size:1.2rem; display:flex; align-items:center; gap:10px;">
+      <img src="logo.png" alt="HL Logo" style="width:30px;"> HYPERLINK
+    </h1>
+    <button class="close-btn" aria-label="Close Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <nav class="overlay-nav">
+    <ul>
+      <!-- Note: Move the class="active" depending on the current file -->
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="about.html" class="active">ABOUT US</a></li>
+      <li><a href="resource.html">RESOURCES</a></li>
+      <li><a href="gallery.html">EVENTS & GALLERY</a></li>
+      <li><a href="contact.html">CONTACT US</a></li>
+    </ul>
+  </nav>
+</div>
+
+
+  <main class="main-content">
+    <section class="spatial-hero">
+      <nav class="spatial-dock" aria-label="Quick links">
+        <a href="index.html" title="Home">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5L12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/></svg>
+        </a>
+        <a href="#officers-directory" title="Meet the Officers">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-4 3-6.5 7-6.5s7 2.5 7 6.5"/></svg>
+        </a>
+        <a href="gallery.html" title="Events & Gallery">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>
+        </a>
+        <a href="contact.html" title="Contact Us">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 7 9-7"/></svg>
+        </a>
+      </nav>
+
+      <div class="spatial-hero-content">
+        <span class="chip chip-vibrant">Now Featuring</span>
+        <h2>About Hyperlink</h2>
+        <p>The ICT and multimedia backbone of Nazarene Catholic School — a self-sustaining technical alliance built by students, for students and faculty alike.</p>
+        <div class="pill-actions">
+          <a href="#mission" class="pill-btn solid">Our Mission</a>
+          <a href="#officers-directory" class="pill-btn ghost">Meet the Team</a>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <main class="main-content">
+    <div class="two-column-layout">
+      <div class="glass-panel dark spatial-panel">
+        <span class="chip chip-cream">Community Focus</span>
+        <h3 style="color:var(--maroon-light); margin:.8rem 0 1rem;">TARGET AUDIENCE: TEACHERS & STUDENTS</h3>
+        <p style="font-size:0.95rem;">The Hyperlink Club is specifically structured to support two vital pillars of the Nazarene Catholic School community: our primary/secondary student body and our dedicated teaching faculty. In an era where digital literacy is paramount, students face the challenge of transitioning from passive tech-consumers to analytical problem solvers. Similarly, faculty members require consistent, high-level multimedia support to translate complex curriculum goals into engaging classroom presentations, digital modules, and event documentation.</p>
+      </div>
 
-        <section id="about" class="two-column-layout" style="margin-bottom: 2.5rem;">
+      <div id="mission" class="glass-panel tab-container spatial-panel">
+        <span class="chip chip-vibrant">Our Vision</span>
+        <h3 style="color:var(--maroon-light); margin:.8rem 0 1rem;">OUR MISSION & VISION</h3>
+        <p style="font-size:0.95rem;">Founded on the principles of academic excellence, service, and digital innovation, our mission is to establish a self-sustaining technical alliance across campus. We streamline how the club handles:</p>
+        <ol style="margin:1rem 0 1.5rem 1.5rem; font-size:0.9rem;">
+          <li><strong>Multimedia Production:</strong> Crafting high-impact presentation decks and professional video editing.</li>
+          <li><strong>Event Photography:</strong> Unedited, high-fidelity visual documentation of campus milestones.</li>
+          <li><strong>Publicity Materials (Pubmats):</strong> Clear, engaging visual communication and announcement flyers.</li>
+          <li><strong>School System Support:</strong> Assisting faculty and staff with institutional digital infrastructure.</li>
+        </ol>
+        <a href="contact.html" class="pill-btn solid">Join Our Alliance</a>
+      </div>
+    </div>
 
-            <div class="content-left"
-                style="background-color: var(--charcoal-dark); color: var(--off-white); padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-md); border-top: 5px solid var(--red-vibrant);">
-                <h2 style="color: var(--off-white);">Target Audience: Teachers & Students</h2>
-                <p style="color: var(--off-white);">
-                    The Hyperlink Club is specifically structured to support two vital pillars of the Nazarene Catholic
-                    School community: our primary/secondary student body and our dedicated teaching faculty. In an era
-                    where digital literacy is paramount, students face the challenge of transitioning from passive
-                    tech-consumers to analytical problem solvers. Similarly, faculty members require consistent,
-                    high-level multimedia support to translate complex curriculum goals into engaging classroom
-                    presentations, digital modules, and event documentation.
-                </p>
-                <p style="color: var(--off-white);">
-                    By bridging the gap between classroom theory and institutional ICT application, we ensure that every
-                    member of our campus ecosystem has the technical infrastructure and creative support they need to
-                    thrive.
-                </p>
-                <div class="image-container"
-                    style="margin-top: 1rem; background-color: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2);">
-                    <img src="https://scontent.fmnl44-1.fna.fbcdn.net/v/t39.99422-6/725733722_1021134697106529_4122902786500557405_n.png?stp=dst-jpg_tt6&cstp=mx1200x900&ctp=s1200x900&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGZJWx6mBWw-ZmhrmnK2mvR9m3RVGOwu8D2bdFUY7C7wHRscPJVz6vbrNh5SZqfnDd_zvJGqQI50biPmx8lauHF&_nc_ohc=qZi5-eGISecQ7kNvwGzKxgf&_nc_oc=Adq_o-GnCEReU8jndj3gsNJ2CH50PT7NxbwfXi5W77oTIHpeRg7wpluzEMVCXkVW3ty5-Pw9PQcCfEhXJAdJY5VG&_nc_zt=14&_nc_ht=scontent.fmnl44-1.fna&_nc_gid=laD3jkU8Zf3bAKfQllWPxQ&_nc_ss=7b2a8&oh=00_AQFoYLtXf6KvQq4LOKUpG3m71e-12HTDjsuNlLQ_g5bwVQ&oe=6A7E173C" alt="Nazarene Catholic School Students and Teachers">
-                    <div class="gallery-caption" style="color: var(--off-white);">NCS Students & Faculty
-                        Representatives</div>
-                </div>
-            </div>
+    <p class="section-label">Leadership</p>
+    <h3 class="section-title">The People Behind Hyperlink</h3>
 
-            <div class="visual-right content-section" style="margin-bottom: 0; height: 100%;">
-                <h2>Our Mission & Vision</h2>
-                <p>
-                    Here is an overview of what the Hyperlink Club represents as the tech and multimedia backbone of
-                    Nazarene Catholic School. Founded on the principles of academic excellence, service, and digital
-                    innovation, our mission is to establish a self-sustaining technical alliance across campus. We
-                    strive to empower students through hands-on mentorship in UI/UX architecture, frontend web
-                    development, algorithmic logic, and visual storytelling.
-                </p>
-                <p>
-                    The primary purpose of the Hyperlink Club Website is to serve as a centralized digital hub. We
-                    streamline how the club handles:
-                </p>
-                <ol style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
-                    <li><strong>Multimedia Production:</strong> Crafting high-impact presentation decks and professional
-                        video editing.</li>
-                    <li><strong>Event Photography:</strong> Unedited, high-fidelity visual documentation of campus
-                        milestones.</li>
-                    <li><strong>Publicity Materials (Pubmats):</strong> Clear, engaging visual communication and
-                        announcement flyers.</li>
-                    <li><strong>School System Support:</strong> Assisting faculty and staff with institutional digital
-                        infrastructure.</li>
-                </ol>
-                <div style="text-align: center; width: 100%;">
-                    <a href="contact.html"><button type="button" class="btn">Join Our Alliance</button></a>
-                </div>
-            </div>
+    <!-- Embedded Tab Layout to handle massive table structures compactly -->
+    <div id="officers-directory" class="glass-panel tab-container spatial-panel">
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="officers">Club Officers Directory</button>
+        <button class="tab-btn" data-tab="committees">Committees & Reps</button>
+      </div>
 
-        </section>
+      <div id="officers" class="tab-content active">
+        <p style="margin-bottom:1rem;">Our organization is governed by a dedicated team of student officers and moderated by ICT faculty to ensure fair, structured, and professional service delivery.</p>
+        <div class="cast-grid">
+          <div class="cast-card">
+            <div class="cast-avatar" style="background:var(--maroon-primary);">JM</div>
+            <h5>Ms. Jeica Marie Manaog</h5>
+            <span class="chip chip-cream">Moderator</span>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar" style="background:var(--maroon-vibrant);">CD</div>
+            <h5>Christelle Dayrit</h5>
+            <span class="chip chip-cream">President</span>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar" style="background:var(--maroon-deep);">AP</div>
+            <h5>Amjejomar Para</h5>
+            <span class="chip chip-cream">Vice President</span>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar" style="background:var(--maroon-primary);">RC</div>
+            <h5>Raeufqn Cruz</h5>
+            <span class="chip chip-cream">Secretary</span>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar" style="background:var(--maroon-vibrant);">BT</div>
+            <h5>Brix Arjhel Tagle</h5>
+            <span class="chip chip-cream">Treasurer</span>
+          </div>
+        </div>
+      </div>
 
-        <section id="officers" class="content-section">
-            <h2>CLUB OFFICERS & DIRECTORY</h2>
-            <p>Our organization is governed by a dedicated team of student officers and moderated by ICT faculty to
-                ensure fair, structured, and professional service delivery.</p>
+      <div id="committees" class="tab-content">
+        <div class="committee-grid">
+          <div>
+            <span class="chip chip-vibrant">Committee Heads</span>
+            <ul class="committee-list">
+              <li>Head of Design & UI/UX Architecture</li>
+              <li>Head of Event Photography & Technical Equipment</li>
+              <li>Head of Web Development & Programming Support</li>
+            </ul>
+          </div>
+          <div>
+            <span class="chip chip-cream">Grade Level Representatives</span>
+            <ul class="committee-list">
+              <li>Juan Dela Cruz</li>
+              <li>John Doe</li>
+              <li>Maria Clara</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
-            <div style="overflow-x: auto; margin-top: 1.5rem; margin-bottom: 2.5rem;">
-                <table border="1" cellpadding="12" style="width: 100%; border-collapse: collapse; text-align: left; background-color: #ffffff;">
-                    <thead>
-                        <tr style="background-color: var(--charcoal-dark); color: var(--off-white); ">
-                            <th style="padding: 12px;">Moderator</th>
-                            <th style="padding: 12px;">President</th>
-                            <th style="padding: 12px;">Vice President</th>
-                            <th style="padding: 12px;">Secretary</th>
-                            <th style="padding: 12px;">Treasurer</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="padding: 12px;"><strong>ICT Faculty Lead</strong><br><span style="font-size: 0.85rem; color: #666;">Ms.
-                                    Jeica Marie Manaog</span></td>
-                            <td style="padding: 12px;"><strong>Student Leader</strong><br><span style="font-size: 0.85rem; color: #666;">
-                                Christelle Dayrit</span></td>
-                            <td style="padding: 12px;"><strong>Creative Head</strong><br><span style="font-size: 0.85rem; color: #666;">
-                                Zyriel Loise Tolentino</span></td>
-                            <td style="padding: 12px;"><strong>Docu Lead</strong><br><span style="font-size: 0.85rem; color: #666;">
-                                Raeufqn Cruz</span></td>
-                            <td style="padding: 12px;"><strong>Finance Head</strong><br><span style="font-size: 0.85rem; color: #666;">
-                                Brix Arjhel Tagle</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>Committee & Grade Level Directory</h3>
-            <div style="overflow-x: auto; margin-top: 1rem;">
-                <table border="1" cellpadding="12"
-                    style="width: 100%; border-collapse: collapse; text-align: left; background-color: #ffffff;">
-                    <thead>
-                        <tr style="background-color: var(--charcoal-dark); color: var(--off-white);">
-                            <th style="padding: 12px;">Committee Heads</th>
-                            <th style="padding: 12px;">Grade Level Representatives</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="padding: 12px;">
-                                <ul style="margin-left: 1.25rem;">
-                                    <li>Head of Design & UI/UX Architecture</li>
-                                    <li>Head of Event Photography & Technical Equipment</li>
-                                    <li>Head of Web Development & Programming Support</li>
-                                </ul>
-                            </td>
-                            <td style="padding: 12px;">
-                                <ul style="margin-left: 1.25rem;">
-                                    <li>Juan Dela Cruz</li>
-                                    <li>John Doe</li>
-                                    <li>Maria Clara</li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-    </main>
-<a href="#top" class="back-to-top">↑</a>
-    <footer
-        style="background-color: var(--charcoal-dark); color: var(--off-white); text-align: center; padding: 2rem 5%; margin-top: 4rem;">
-        <p id="foot">&copy; 2026 Hyperlink Club | Nazarene Catholic School. Connecting Minds, Building the Digital Future.</p>
-    </footer>
-
+  <footer class="site-footer">
+    <p>&copy; 2026 Hyperlink Club | Nazarene Catholic School. Connecting Minds, Building the Digital Future.</p>
+  </footer>
 </body>
-
-</html>
+            </html>
+            
