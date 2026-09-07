@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,87 +8,103 @@
   <link href="styl.css" rel="stylesheet">
   <script defer src="script.js"></script>
 </head>
+
 <body>
   <header class="site-header">
-  <div class="nav-container">
-    <h1 style="color:#fff; font-size:1.2rem; display:flex; align-items:center; gap:10px;">
-      <img src="logo.png" alt="HL Logo" style="width:30px;"> HYPERLINK
-    </h1>
-    
-    <!-- Hamburger Button -->
-    <button class="hamburger-btn" aria-label="Open Menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-    </button>
-  </div>
-</header>
+    <div class="nav-container">
+      <h1 style="color:#fff; font-size:1.2rem; display:flex; align-items:center; gap:10px;">
+        <img src="logo.png" alt="HL Logo" style="width:30px;"> HYPERLINK
+      </h1>
 
-<!-- Full-Screen Overlay Menu -->
-<div class="overlay-menu">
-  <div class="overlay-header">
-    <h1 style="color:#fff; font-size:1.2rem; display:flex; align-items:center; gap:10px;">
-      <img src="logo.png" alt="HL Logo" style="width:30px;"> HYPERLINK
-    </h1>
-    <button class="close-btn" aria-label="Close Menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
+      <button class="hamburger-btn" aria-label="Open Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="overlay-menu">
+    <div class="overlay-header">
+      <h1 style="color:#fff; font-size:1.2rem; display:flex; align-items:center; gap:10px;">
+        <img src="logo.png" alt="HL Logo" style="width:30px;"> HYPERLINK
+      </h1>
+      <button class="close-btn" aria-label="Close Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <nav class="overlay-nav">
+      <ul>
+
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT US</a></li>
+        <li><a href="resource.html">RESOURCES</a></li>
+        <li><a href="gallery.html" class="active">EVENTS & GALLERY</a></li>
+        <li><a href="contact.html">CONTACT US</a></li>
+      </ul>
+    </nav>
   </div>
-  <nav class="overlay-nav">
-    <ul>
-      <!-- Note: Move the class="active" depending on the current file -->
-      <li><a href="index.html">HOME</a></li>
-      <li><a href="about.html">ABOUT US</a></li>
-      <li><a href="resource.html">RESOURCES</a></li>
-      <li><a href="gallery.html" class="active">EVENTS & GALLERY</a></li>
-      <li><a href="contact.html">CONTACT US</a></li>
-    </ul>
-  </nav>
-</div>
 
 
   <main class="main-content">
     <div class="glass-panel">
       <h2 style="color:var(--maroon-primary); margin-bottom:0.5rem;">HYPERLINK EVENT GALLERY & WORKSHOPS</h2>
-      <p style="font-size:0.95rem; margin-bottom:1.5rem;">Explore our visual documentation of campus events, technical bootcamps, and student exhibitions at Nazarene Catholic School. Every photo is framed in our signature gallery style, capturing the intersection of everyday school life and digital technology.</p>
-      
+      <p style="font-size:0.95rem; margin-bottom:1.5rem;">Explore our visual documentation of campus events, technical
+        bootcamps, and student exhibitions at Nazarene Catholic School. Every photo is framed in our signature gallery
+        style, capturing the intersection of everyday school life and digital technology.</p>
+
       <h3 style="color:var(--maroon-deep); margin-bottom:1rem;">LATEST FEATURED VIDEO: NUTRITION MONTH 2026</h3>
-      <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px; background:#000;">
-        <iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" src="https://www.youtube.com/embed/qaEUsdteqbs?si=4SQHxBus2tGJHgcf" allowfullscreen></iframe>
+      <div
+        style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px; background:#000;">
+        <iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+          src="https://www.youtube.com/embed/qaEUsdteqbs?si=4SQHxBus2tGJHgcf" allowfullscreen></iframe>
       </div>
     </div>
 
     <div class="glass-panel">
       <h3 style="color:var(--maroon-primary); margin-bottom:1.5rem;">CAMPUS PHOTO DOCUMENTATION GRID</h3>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem;">
-        
-        <div style="text-align:center; padding:1rem; background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.05); border-radius:10px;">
-          <img src="sunday_mass.jpg" alt="Sunday Mass" class="gallery-img" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; margin-bottom:0.5rem;">
+
+        <div
+          style="text-align:center; padding:1rem; background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.05); border-radius:10px;">
+          <img src="sunday_mass.jpg" alt="Sunday Mass" class="gallery-img"
+            style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; margin-bottom:0.5rem;">
           <p style="font-size:0.85rem; font-weight:bold; color:var(--maroon-deep);">Sunday Mass</p>
         </div>
 
-        <div style="text-align:center; padding:1rem; background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.05); border-radius:10px;">
-          <img src="english_month.jpg" alt="English Month" class="gallery-img" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; margin-bottom:0.5rem;">
-          <p style="font-size:0.85rem; font-weight:bold; color:var(--maroon-deep);">School Event | English Month Celebration</p>
+        <div
+          style="text-align:center; padding:1rem; background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.05); border-radius:10px;">
+          <img src="english_month.jpg" alt="English Month" class="gallery-img"
+            style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; margin-bottom:0.5rem;">
+          <p style="font-size:0.85rem; font-weight:bold; color:var(--maroon-deep);">School Event | English Month
+            Celebration</p>
         </div>
 
-        <div style="text-align:center; padding:1rem; background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.05); border-radius:10px;">
-          <img src="morning_assembly.jpg" alt="Morning Assembly" class="gallery-img" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; margin-bottom:0.5rem;">
+        <div
+          style="text-align:center; padding:1rem; background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.05); border-radius:10px;">
+          <img src="morning_assembly.jpg" alt="Morning Assembly" class="gallery-img"
+            style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; margin-bottom:0.5rem;">
           <p style="font-size:0.85rem; font-weight:bold; color:var(--maroon-deep);">Morning Assembly</p>
         </div>
 
-        <div style="text-align:center; padding:1rem; background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.05); border-radius:10px;">
-          <img src="event1.png" alt="Nutrition Month Photobooth" class="gallery-img" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; margin-bottom:0.5rem;">
+        <div
+          style="text-align:center; padding:1rem; background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.05); border-radius:10px;">
+          <img src="event1.png" alt="Nutrition Month Photobooth" class="gallery-img"
+            style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; margin-bottom:0.5rem;">
           <p style="font-size:0.85rem; font-weight:bold; color:var(--maroon-deep);">Hyperlink Photobooth</p>
         </div>
 
-        <div style="text-align:center; padding:1rem; background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.05); border-radius:10px;">
-          <img src="parent.jpg" alt="Parent Orientation" class="gallery-img" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; margin-bottom:0.5rem;">
+        <div
+          style="text-align:center; padding:1rem; background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.05); border-radius:10px;">
+          <img src="parent.jpg" alt="Parent Orientation" class="gallery-img"
+            style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; margin-bottom:0.5rem;">
           <p style="font-size:0.85rem; font-weight:bold; color:var(--maroon-deep);">Parent Orientation</p>
         </div>
 
@@ -99,4 +116,5 @@
     <p>&copy; 2026 Hyperlink Club | Nazarene Catholic School. Connecting Minds, Building the Digital Future.</p>
   </footer>
 </body>
+
 </html>
