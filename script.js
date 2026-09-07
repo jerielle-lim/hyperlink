@@ -30,18 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
   
   modal.addEventListener("click", () => modal.style.display = "none");
 
-  // Compact Liquid Glass Menu Logic
   const hamburgerBtn = document.querySelector('.hamburger-btn');
   const overlayMenu = document.querySelector('.overlay-menu');
 
   if (hamburgerBtn && overlayMenu) {
-    // Toggle menu on hamburger click
+
     hamburgerBtn.addEventListener('click', (e) => {
-      e.stopPropagation(); // Prevents document click from instantly firing
+      e.stopPropagation();
       overlayMenu.classList.toggle('active');
     });
 
-    // Close menu when clicking anywhere outside of it
     document.addEventListener('click', (e) => {
       if (!overlayMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
         overlayMenu.classList.remove('active');
