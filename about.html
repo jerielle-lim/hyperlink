@@ -236,48 +236,114 @@
       border-bottom-color: rgba(255, 255, 255, 0.12);
     }
 
-    .cast-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 1.2rem;
+    /* ---------- Officer cards: liquid-glass profile card carousel ---------- */
+    .cast-carousel {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
       margin-top: 1rem;
     }
 
+    .carousel-arrow {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .carousel-arrow:hover {
+      background: var(--maroon-vibrant);
+      border-color: var(--maroon-vibrant);
+    }
+
+    .cast-grid {
+      flex: 1;
+      display: flex;
+      gap: 1.4rem;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      scroll-behavior: smooth;
+      padding: .3rem .1rem 1rem;
+      cursor: grab;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .cast-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cast-grid.dragging {
+      cursor: grabbing;
+      scroll-snap-type: none;
+    }
+
     .cast-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-md);
-      padding: 1.4rem 1rem;
-      text-align: center;
+      flex: 0 0 200px;
+      scroll-snap-align: start;
+    }
+
+    .cast-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      border-radius: 26px;
+      display: flex;
+      align-items: flex-end;
+      border: 1px solid rgba(255, 255, 255, 0.18);
       transition: var(--transition);
     }
 
     .cast-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--glass-shadow);
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
     }
 
-    .cast-avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      margin: 0 auto .8rem;
+    .cast-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 32%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .cast-photo {
+      position: absolute;
+      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
+      font-size: 2.6rem;
       font-weight: bold;
-      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 1px;
     }
 
-    .cast-card h5 {
-      font-size: .92rem;
-      margin-bottom: .5rem;
+    .cast-info {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      padding: 2.2rem 1rem 1.1rem;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 55%, rgba(0, 0, 0, 0.82) 100%);
+    }
+
+    .cast-info h5 {
       color: #fff;
-    }
-
-    .cast-card .chip {
-      margin: 0 auto;
+      font-size: .98rem;
+      margin-bottom: .5rem;
+      line-height: 1.25;
     }
 
     .committee-grid {
@@ -301,6 +367,11 @@
       border-radius: var(--radius-sm);
       padding: .7rem 1rem;
       font-size: .88rem;
+    }
+
+    @media (max-width: 600px) {
+      .cast-card { flex-basis: 165px; }
+      .carousel-arrow { width: 36px; height: 36px; }
     }
 
     @media (max-width: 760px) {
@@ -334,7 +405,6 @@
         <img src="logo.png" alt="HL Logo" style="width:30px;"> HYPERLINK
       </h1>
 
-      <!-- Hamburger Button -->
       <button class="hamburger-btn" aria-label="Open Menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
@@ -462,32 +532,50 @@
       <div id="officers" class="tab-content active">
         <p style="margin-bottom:1rem;">Our organization is governed by a dedicated team of student officers and
           moderated by ICT faculty to ensure fair, structured, and professional service delivery.</p>
-        <div class="cast-grid">
-          <div class="cast-card">
-            <div class="cast-avatar" style="background:var(--maroon-primary);">JM</div>
-            <h5>Ms. Jeica Marie Manaog</h5>
-            <span class="chip chip-cream">Moderator</span>
+        <div class="cast-carousel">
+          <button class="carousel-arrow arrow-left" id="castPrev" aria-label="Previous officer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="cast-grid" id="castTrack">
+          <div class="cast-card" style="background:linear-gradient(160deg, var(--maroon-deep), var(--maroon-primary));">
+            <div class="cast-photo">JM</div>
+            <div class="cast-info">
+              <h5>Ms. Jeica Marie Manaog</h5>
+              <span class="chip chip-cream">Moderator</span>
+            </div>
           </div>
-          <div class="cast-card">
-            <div class="cast-avatar" style="background:var(--maroon-vibrant);">CD</div>
-            <h5>Christelle Dayrit</h5>
-            <span class="chip chip-cream">President</span>
+          <div class="cast-card" style="background:linear-gradient(160deg, var(--maroon-vibrant), var(--maroon-primary));">
+            <div class="cast-photo">CD</div>
+            <div class="cast-info">
+              <h5>Christelle Dayrit</h5>
+              <span class="chip chip-cream">President</span>
+            </div>
           </div>
-          <div class="cast-card">
-            <div class="cast-avatar" style="background:var(--maroon-deep);">AP</div>
-            <h5>Amjejomar Para</h5>
-            <span class="chip chip-cream">Vice President</span>
+          <div class="cast-card" style="background:linear-gradient(160deg, var(--maroon-primary), var(--maroon-deep));">
+            <div class="cast-photo">AP</div>
+            <div class="cast-info">
+              <h5>Amjejomar Para</h5>
+              <span class="chip chip-cream">Vice President</span>
+            </div>
           </div>
-          <div class="cast-card">
-            <div class="cast-avatar" style="background:var(--maroon-primary);">RC</div>
-            <h5>Raeufqn Cruz</h5>
-            <span class="chip chip-cream">Secretary</span>
+          <div class="cast-card" style="background:linear-gradient(160deg, var(--maroon-vibrant), var(--maroon-deep));">
+            <div class="cast-photo">RC</div>
+            <div class="cast-info">
+              <h5>Raeufqn Cruz</h5>
+              <span class="chip chip-cream">Secretary</span>
+            </div>
           </div>
-          <div class="cast-card">
-            <div class="cast-avatar" style="background:var(--maroon-vibrant);">BT</div>
-            <h5>Brix Arjhel Tagle</h5>
-            <span class="chip chip-cream">Treasurer</span>
+          <div class="cast-card" style="background:linear-gradient(160deg, var(--maroon-deep), var(--maroon-vibrant));">
+            <div class="cast-photo">BT</div>
+            <div class="cast-info">
+              <h5>Brix Arjhel Tagle</h5>
+              <span class="chip chip-cream">Treasurer</span>
+            </div>
           </div>
+          </div>
+          <button class="carousel-arrow arrow-right" id="castNext" aria-label="Next officer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
       </div>
 
