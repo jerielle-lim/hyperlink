@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Us | Hyperlink Club</title>
+  <link href="styl.css" rel="stylesheet">
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <h1 style="color:#fff; font-size:1.2rem; display:flex; align-items:center; gap:10px;">
+        <img src="logo.png" alt="HL Logo" style="width:30px;"> HYPERLINK
+      </h1>
+
+      <button class="hamburger-btn" aria-label="Open Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="overlay-menu">
+    <div class="overlay-header">
+      <h1 style="color:#fff; font-size:1.2rem; display:flex; align-items:center; gap:10px;">
+        <img src="logo.png" alt="HL Logo" style="width:30px;"> HYPERLINK
+      </h1>
+      <button class="close-btn" aria-label="Close Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <nav class="overlay-nav">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT US</a></li>
+        <li><a href="resource.html">RESOURCES</a></li>
+        <li><a href="gallery.html">EVENTS & GALLERY</a></li>
+        <li><a href="contact.html">CONTACT US</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main class="main-content">
+    <div class="glass-panel">
+      <h2 style="color:var(--maroon-primary); margin-bottom:0.5rem;">JOIN THE HYPERLINK ALLIANCE</h2>
+      <p style="font-size:0.95rem; margin-bottom:1.5rem;">Fill out the form below to apply for membership. Once
+        submitted, a club officer will reach out to confirm your slot and walk you through onboarding.</p>
+
+      <form class="styled-form">
+        <div class="form-group">
+          <label>FULL NAME:</label>
+          <input type="text" placeholder="e.g., Juan Dela Cruz" required>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label>GRADE & SECTION:</label>
+            <input type="text" placeholder="e.g., Grade 12 - St. John the Beloved" required>
+          </div>
+          <div class="form-group">
+            <label>INSTITUTIONAL EMAIL ADDRESS:</label>
+            <input type="email" placeholder="e.g., juandelacruz@ncs.edu.ph" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>CONTACT NUMBER:</label>
+          <input type="tel" placeholder="e.g., 0999-999-9999" required>
+        </div>
+
+        <div class="form-group">
+          <label>AREA OF INTEREST (SELECT ALL THAT APPLY):</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox"> Web Development & Programming</label>
+            <label><input type="checkbox"> Graphic & Pubmat Design</label>
+            <label><input type="checkbox"> Event Photography & Videography</label>
+            <label><input type="checkbox"> Event Management & Documentation</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>WHY DO YOU WANT TO JOIN HYPERLINK?</label>
+          <textarea rows="3"
+            placeholder="Tell us a bit about your interest in ICT, multimedia, or the club..." required></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Submit Application</button>
+          <button type="reset" class="btn btn-secondary">Clear Form</button>
+        </div>
+      </form>
+    </div>
+
+    <p style="text-align:center; margin-top:1.5rem;">
+      <a href="contact.html" style="color:var(--maroon-primary); font-weight:bold; text-decoration:none;">&larr; Back to Contact Us</a>
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Hyperlink Club | Nazarene Catholic School. Connecting Minds, Building the Digital Future.</p>
+  </footer>
+</body>
+
+</html>
